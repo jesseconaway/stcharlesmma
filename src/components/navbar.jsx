@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import facebookIcon from '../assets/facebook-icon-gray.svg';
 import instagramIcon from '../assets/instagram-icon-gray.svg';
+import logoCircle from '../assets/SCMMA_logo_circle.svg';
 
 class Navbar extends Component {
     state = { expanded: false, scrolled: false }
@@ -42,7 +43,7 @@ class Navbar extends Component {
 
         return (
             <nav className={navbarClass}>
-                <div className="brand"><Link to="index.html">SCMMA</Link></div>
+                <div className="brand"><Link to="/"><img src={logoCircle} alt="St. Charles MMA Logo" />SCMMA</Link></div>
                 <span onClick={this.expandNav} className={navToggleClass}>
                     <span></span>
                     <span></span>
@@ -50,13 +51,13 @@ class Navbar extends Component {
                 </span>
                 <div className={navLinksClass}>
                     <ul className={ulClass}>
-                        <li><Link to="/#blank">Coaches</Link></li>
-                        <li><Link to="/#blank">Fighters</Link></li>
-                        <li><Link to="/#blank">Schedule</Link></li>
-                        <li><Link to="/#blank">Classes</Link></li>
-                        <li><Link to="/#blank">Belt Rankings</Link></li>
-                        <li><Link to="/#blank">About</Link></li>
-                        <li><Link to="/#blank">Contact</Link></li>
+                        <li><Link to="/coaches">Coaches</Link></li>
+                        <li><Link to="/fighters">Fighters</Link></li>
+                        <li><Link to="/schedule">Schedule</Link></li>
+                        <li><Link to="/classes">Classes</Link></li>
+                        <li><Link to="/beltrankings">Belt Rankings</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
                         <li>
                             <a className="social-link" href="https://www.facebook.com/SCMMABJJ"
                             ><img

@@ -1,7 +1,7 @@
 $bg-color: hsl(0, 0, 70);
 $bg-hover: hsl(0, 0, 50);
-$primary: hsla(0, 100, 45, 1);
-$primary-hover: hsla(0, 50, 40, 1);
+$primary: hsla(354, 72.7, 43.1, 1);
+$primary-hover: hsla(354, 72.7, 39, 1);
 
 * {
   margin: 0;
@@ -9,7 +9,7 @@ $primary-hover: hsla(0, 50, 40, 1);
   box-sizing: border-box;
 }
 body {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
   overflow-x: hidden;
@@ -18,8 +18,9 @@ h1,
 h2,
 h3,
 h4,
-h5 {
-  font-family: "Arvo", serif;
+h5,
+text {
+  font-family: "Josefin Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
@@ -54,6 +55,7 @@ code {
 
 //NAVIGATION
 .navbar {
+  font-family: "Roboto Condensed", sans-serif;
   transition-duration: 200ms;
   z-index: 999;
   position: fixed;
@@ -66,6 +68,15 @@ code {
   flex-direction: column;
   .brand {
     z-index: 2;
+    img {
+      position: relative;
+      top: 0.2rem;
+      height: 1.7rem;
+      width: auto;
+      margin-right: 0.5rem;
+      background-color: white;
+      border-radius: 50%;
+    }
     a {
       display: block;
       font-size: 1.7rem;
@@ -170,10 +181,104 @@ code {
   }
 }
 
+//HOMEPAGE
+.backgroundHeader {
+  img {
+    z-index: -1;
+    height: 700px;
+    width: auto;
+    position: fixed;
+    top: -150px;
+    right: -100px;
+  }
+}
+.landingImg {
+  width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  display: block;
+}
+.headerTitle {
+  text-align: center;
+  font-size: 2.2rem;
+  padding-top: 1rem;
+}
+// FOOTER
+.footer {
+  color: white;
+  margin-top: 1rem;
+  background-color: $primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  ul {
+    list-style-type: none;
+    li {
+      padding: 0.2rem;
+      a {
+        text-decoration: none;
+        color: white;
+        &:hover {
+          color: $bg-color;
+        }
+      }
+    }
+  }
+  button {
+    color: black;
+    margin: 0.5rem 0;
+    background-color: white;
+    &:hover {
+      background-color: $bg-color;
+    }
+  }
+  div {
+    width: 100%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.subhead {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+// SMALL
+@media (min-width: 576px) {
+  .container {
+    width: 540px;
+    padding: 0;
+  }
+}
+
+//MEDIUM
+@media (min-width: 768px) {
+  .container {
+    width: 720px;
+  }
+  .headerTitle {
+    font-size: 3.6rem;
+  }
+  .subhead {
+    font-size: 1.2rem;
+    width: 80%;
+  }
+}
+
 // LARGE
 @media (min-width: 992px) {
   .container {
     width: 960px;
+  }
+  .headerTitle {
+    font-size: 2.6rem;
+  }
+  .subhead {
+    font-size: 1.5rem;
   }
 
   // NAVIGATION
@@ -183,11 +288,6 @@ code {
   }
   .nav-toggle {
     display: none;
-  }
-  .videoPlayerContainer {
-    .nav-toggle {
-      display: flex;
-    }
   }
   .social-link {
     height: 57px;
@@ -207,5 +307,25 @@ code {
         }
       }
     }
+  }
+  // FOOTER
+  .footer {
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: space-around;
+    div {
+      width: auto;
+      margin: 0;
+      justify-content: flex-start;
+    }
+  }
+}
+// DESKTOP
+@media (min-width: 1200px) {
+  .container {
+    width: 1140px;
+  }
+  .headerTitle {
+    font-size: 3.1rem;
   }
 }
