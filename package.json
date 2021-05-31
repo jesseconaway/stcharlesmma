@@ -2,10 +2,10 @@
   "name": "stcharlesmma",
   "version": "1.0.0",
   "description": "Saint Charles MMA",
-  "main": "/backend/server.js",
+  "main": "/backEnd/server.js",
   "scripts": {
-    "start-nodemon": "nodemon --watch backend --exec node backend/server.js",
-    "start": "node backend/server.js",
+    "start-nodemon": "nodemon --watch backEnd --exec node backEnd/server.js",
+    "start": "node backEnd/server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontEnd && npm run build --prefix frontEnd"
   },
   "repository": {
