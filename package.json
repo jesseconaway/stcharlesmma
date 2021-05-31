@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-nodemon": "nodemon --watch backend --exec node backend/server.js",
-    "start": "node server.js",
+    "start": "node backend/server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontEnd && npm run build --prefix frontEnd"
   },
   "repository": {
