@@ -12,13 +12,19 @@ import Contact from './components/contactPage';
 import Footer from './components/footer';
 import Admin from './components/adminPage';
 import Waiver from './components/waiver';
+import WaiverSign from './components/waiverSign';
+import WaiverSuccess from './components/waiverSuccess';
+import AdminLogin from './components/adminLogin';
 
 function App() {
   return (
     <>
       <Navbar />
       <Switch>
+        <Route path="/waiver/sign" component={WaiverSign} />
+        <Route path="/waiversuccess" component={WaiverSuccess} />
         <Route path="/waiver" component={Waiver} />
+        <Route path="/adminLogin" component={AdminLogin} />
         <Route path="/admin" component={Admin} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />

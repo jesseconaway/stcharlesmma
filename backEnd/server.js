@@ -4,12 +4,19 @@ const fs = require('fs');
 const path = require('path');
 const dotenv = require('dotenv');
 const coachRouter = require('./routers/coachRouter');
+const fighterRouter = require('./routers/fighterRouter');
 const imageRouter = require('./routers/imageRouter');
+const classRouter = require('./routers/classRouter');
+const scheduleRouter = require('./routers/scheduleRouter');
+const beltRouter = require('./routers/beltRouter');
+const docusignRouter = require('./routers/docusignRouter');
+const contactRouter = require('./routers/contactRouter');
+const loginRouter = require('./routers/loginRouter');
 
 dotenv.config();
 const app = express();
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/images', express.static('images'));
 
@@ -29,8 +36,15 @@ app.get('/', (req, res) => {
     res.send('Server Ready');
 })
 
+app.use('/api/belts', beltRouter);
+app.use('/api/classes', classRouter);
 app.use('/api/coaches', coachRouter);
+app.use('/api/fighters', fighterRouter);
+app.use('/api/schedule', scheduleRouter);
 app.use('/api/images', imageRouter);
+app.use('/api/docusign', docusignRouter);
+app.use('/api/contact', contactRouter);
+app.use('/api/adminLogin', loginRouter);
 
 const port = process.env.PORT || 5000;
 

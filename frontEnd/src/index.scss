@@ -13,6 +13,9 @@ body {
   font-weight: 400;
   font-style: normal;
   overflow-x: hidden;
+  padding-bottom: 657.6px;
+  min-height: 100vh;
+  position: relative;
 }
 h1,
 h2,
@@ -42,8 +45,16 @@ button {
   &:active {
     transform: scale(0.99);
   }
+  &.success {
+    background-color: hsla(150, 90, 33, 1);
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }
 table {
+  margin-top: 1rem;
   border: 1px solid black;
   border-collapse: collapse;
   td,
@@ -53,6 +64,9 @@ table {
   }
 }
 form {
+  button {
+    margin: 0.5rem 0.5rem 0 0;
+  }
   label {
     display: block;
     margin: 1rem 0 0.2rem 0;
@@ -69,9 +83,36 @@ form {
   }
 }
 .container {
-  margin: 70px auto 0 auto;
+  margin: 90px auto 0 auto;
   padding: 10px;
   width: 100%;
+}
+.homeContainer {
+  @extend .container;
+  margin: 0 auto;
+  hr {
+    background-color: $bg-color;
+    border: 1px solid $bg-color;
+    border-radius: 1px;
+  }
+}
+.aboutContainer {
+  @extend .homeContainer;
+  margin: 90px auto 0 auto;
+  & > div:nth-child(1) {
+    padding: 0 0 3rem 0;
+    .infoContainer {
+      width: 90%;
+      margin: 0 auto 3rem auto;
+      h1 {
+        margin-bottom: 2rem;
+      }
+    }
+    img {
+      width: 90%;
+      height: auto;
+    }
+  }
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -166,7 +207,7 @@ code {
         color: black;
         &:hover {
           background-color: hsla(0, 0, 0, 0);
-          color: $bg-hover;
+          color: $primary;
         }
       }
     }
@@ -205,8 +246,6 @@ code {
     border-radius: 5px;
   }
 }
-
-//HOMEPAGE
 .backgroundHeader {
   img {
     z-index: -1;
@@ -217,12 +256,6 @@ code {
     right: -100px;
   }
 }
-.landingImg {
-  width: 100%;
-  height: auto;
-  margin: 1.5rem auto;
-  display: block;
-}
 .headerTitle {
   text-align: center;
   font-size: 2.2rem;
@@ -230,8 +263,11 @@ code {
 }
 // FOOTER
 .footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
   color: white;
-  margin-top: 1rem;
   background-color: $primary;
   display: flex;
   flex-direction: column;
@@ -266,9 +302,50 @@ code {
     align-items: center;
   }
 }
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+  }
+  .card {
+    margin: 1rem 0;
+    width: 90%;
+    background-color: $primary;
+    border-radius: 4px;
+    a {
+      height: 100%;
+      width: 100%;
+    }
+    h2 {
+      margin: 0;
+    }
+    p {
+      text-align: left;
+      font-size: 1.1rem;
+      margin: 1.1rem 0 1.5rem 0;
+    }
+    button {
+      border: 2px solid white;
+      background-color: hsla(0, 0, 0, 0);
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}
 .subhead {
   width: 90%;
-  margin: 0 auto;
+  margin: 2rem auto 3rem auto;
   font-size: 1rem;
 }
 .thumbnailImg {
@@ -320,7 +397,13 @@ code {
   transition: 500ms ease-out;
   will-change: z-index, opacity, height, visibility;
   position: relative;
+  form {
+    display: none;
+  }
   &.is-visible {
+    form {
+      display: block;
+    }
     z-index: 1;
     opacity: 1;
     height: 100%;
@@ -378,16 +461,46 @@ code {
     }
   }
 }
-.cardContainer {
-  width: 1200px;
+.classContainer {
+  @extend .container;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.coachCardContainer {
+  @extend .container;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.scheduleContainer {
+  @extend .container;
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: 90%;
+  grid-template-rows: auto auto auto auto auto auto auto;
+  gap: 3rem 5%;
+  .beltHeader {
+    margin: 1rem auto;
+    text-align: center;
+  }
+}
+.beltRankContainer {
+  @extend .scheduleContainer;
+  grid-template-rows: auto auto auto auto;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 .coachCard {
   position: relative;
-  width: 510px;
-  height: 300px;
+  width: 382px;
+  height: 225px;
   margin: 2rem 0;
   .blackDiv {
     position: absolute;
@@ -405,8 +518,10 @@ code {
   }
   .coachName {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    background-color: hsla(0, 0, 0, 0.3);
+    padding-right: 10px;
+    top: 15px;
+    left: 15px;
     font-size: 2rem;
     font-family: "Josefin Sans", sans-serif;
     font-weight: 700;
@@ -418,8 +533,10 @@ code {
   }
   .coachClasses {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
+    background-color: hsla(0, 0, 0, 0.3);
+    padding-right: 10px;
+    bottom: 15px;
+    left: 15px;
     font-size: 1.4rem;
     font-weight: 700;
     color: white;
@@ -429,12 +546,373 @@ code {
     }
   }
   .coachImg img {
-    height: 260px;
-    width: 310px;
+    height: 195px;
+    width: 232px;
     object-fit: cover;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
+  }
+}
+.secondaryNav {
+  margin: 1rem 0 1.5rem 0;
+  background-color: $primary;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: auto;
+  li {
+    a {
+      &.active {
+        background-color: $primary-hover;
+      }
+      text-decoration: none;
+      color: white;
+      padding: 0.7rem 1rem;
+      display: block;
+      font-size: 1.2rem;
+      text-align: center;
+      &:hover {
+        background-color: $bg-hover;
+      }
+    }
+  }
+  li:nth-last-child(1) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    flex-grow: 10;
+    a {
+      text-align: center;
+      flex-grow: 0;
+      background-color: hsl(0, 0, 80);
+      color: black;
+      border-left: 4px solid white;
+      &:hover {
+        background-color: hsl(0, 0, 70);
+      }
+    }
+  }
+}
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  a:nth-child(2) {
+    margin-left: 1rem;
+    margin-bottom: 3rem;
+  }
+  .space-between {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    hr {
+      width: 40%;
+      height: 0;
+      border: 2px solid black;
+      background-color: black;
+      border-radius: 2px;
+      margin-top: 0.6rem;
+    }
+    p {
+      font-size: 1.2rem;
+      text-align: center;
+      font-weight: 700;
+    }
+  }
+  form {
+    margin-bottom: 2rem;
+    width: 300px;
+    input,
+    label,
+    textarea {
+      width: 100%;
+    }
+  }
+  .google-map {
+    margin-bottom: 2rem;
+  }
+}
+.homeFlexContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+  .mainContentParagraph {
+    margin-top: 2rem;
+    width: 340px;
+    font-size: 1.1rem;
+    strong {
+      color: $primary;
+    }
+  }
+}
+.flexContainerVertical {
+  display: flex;
+  flex-direction: column;
+  a:nth-child(2) {
+    margin: 1rem 0 0 0;
+  }
+}
+.fighterCard {
+  width: 330px;
+  text-align: center;
+  margin: 2rem 0;
+  .fighterImg img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.8rem;
+  }
+  .fighterName {
+    font-size: 1.2rem;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+}
+.adminList {
+  margin: 1rem 0;
+}
+.adminBeltList {
+  margin: 1rem 0;
+  text-align: center;
+}
+.adminListItem {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+  p {
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+}
+.adminBeltItem {
+  @extend .adminListItem;
+  margin: 0.2rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.adminScheduleItem {
+  @extend .adminListItem;
+  margin: 0.2rem 0;
+  a {
+    color: black;
+    text-decoration: none;
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+.fighterListItem {
+  @extend .adminListItem;
+  margin: 0.5rem 0;
+  p {
+    font-size: 1rem;
+  }
+}
+.deleteIcon {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  background-color: $primary;
+  border-radius: 50%;
+  position: relative;
+  top: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    position: relative;
+    left: -6px;
+    top: -0.5px;
+    span {
+      background-color: white;
+      height: 1.9px;
+      width: 12px;
+      position: absolute;
+      border-radius: 1px;
+      transform-origin: center;
+    }
+    span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+    span:nth-child(2) {
+      transform: rotate(-45deg);
+    }
+  }
+}
+.classItem {
+  width: 340px;
+  padding: 1rem;
+  p {
+    margin: 1rem 0;
+  }
+}
+.hook {
+  position: relative;
+  top: -80px;
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loadingBox {
+  .svg-inline--fa.fa-w-16 {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+  margin: 4rem 0;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-size: 2.2rem;
+    margin-right: 1rem;
+  }
+}
+.spinner {
+  height: 2.2rem;
+  width: 2.2rem;
+  animation: spinner 1s linear infinite;
+}
+
+.google-map {
+  h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  width: 100%;
+  height: 300px;
+}
+
+.pin {
+  display: flex;
+  align-items: center;
+  width: auto;
+  .icon {
+    height: 40px;
+    width: auto;
+    color: $primary;
+  }
+  .pin-icon {
+    position: relative;
+    transform: translateX(-50%) translateY(-100%);
+  }
+}
+.videoPlayer {
+  height: 197px;
+  width: 350px;
+  margin: 0 auto;
+}
+.landingImgContainer {
+  height: 240px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 58.4px 0 3rem 0;
+}
+.landingImg {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+}
+@keyframes slide-in {
+  0% {
+    display: block;
+    left: -100%;
+    opacity: 0%;
+  }
+  70% {
+    left: 5rem;
+    opacity: 70%;
+  }
+  100% {
+    left: 2rem;
+  }
+}
+.carouselContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(hsla(0, 0, 100, 0.4), hsla(0, 0, 0, 0.4) 40%);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  .carouselItemInactive {
+    position: absolute;
+    color: white;
+    display: none;
+    left: 2rem;
+    bottom: 3rem;
+    width: 90vw;
+    overflow: hidden;
+    h1 {
+      font-size: 1.2rem;
+    }
+    p {
+      margin: 0.5rem 0 0.8rem 0;
+      font-size: 1rem;
+    }
+    button {
+      border: 2px solid white;
+      background-color: hsla(0, 0, 0, 0);
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+      &:hover {
+        background-color: white;
+        a {
+          color: black;
+        }
+      }
+    }
+  }
+  .carouselItemActive {
+    @extend .carouselItemInactive;
+    animation-name: slide-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    display: block;
+  }
+  .pillBox {
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: center;
+    .pill {
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      background-color: hsla(0, 0, 100, 0.5);
+      margin: 0 0.7rem;
+      cursor: pointer;
+    }
+    .pill:nth-child(1) {
+      margin-left: 0;
+    }
+    .pill:nth-last-child(1) {
+      margin-right: 0;
+    }
+    .activePill {
+      background-color: hsla(0, 0, 100, 1);
+    }
   }
 }
 
@@ -444,10 +922,99 @@ code {
     width: 540px;
     padding: 0;
   }
+  .classItem {
+    width: 500px;
+  }
+  .videoPlayer {
+    height: 304px;
+    width: 540px;
+  }
+  .landingImgContainer {
+    min-height: 200px;
+    width: 100%;
+    height: 100%;
+  }
+  .landingImg {
+    height: auto;
+    width: 100%;
+  }
 }
 
 //MEDIUM
 @media (min-width: 768px) {
+  @keyframes slide-in {
+    0% {
+      display: block;
+      left: -100%;
+      opacity: 0%;
+    }
+    70% {
+      left: 8rem;
+      opacity: 70%;
+    }
+    100% {
+      left: 6rem;
+    }
+  }
+  .aboutContainer {
+    margin: 90px auto 0 auto;
+    & > div:nth-child(1) {
+      .infoContainer {
+        width: 70%;
+        margin: 0;
+        padding-right: 0;
+        padding-bottom: 2rem;
+      }
+      img {
+        width: 30%;
+        height: auto;
+      }
+    }
+  }
+  .carouselContainer {
+    .carouselItemInactive {
+      left: 6rem;
+      bottom: 10rem;
+      h1 {
+        font-size: 2.4rem;
+      }
+      p {
+        margin: 0.6rem 0 1.4rem 0;
+        font-size: 1.2rem;
+      }
+      button {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.7rem;
+      }
+    }
+    .pillBox {
+      bottom: 2rem;
+      .pill {
+        height: 15px;
+        width: 15px;
+        margin: 0 1rem;
+      }
+    }
+  }
+  .coachCard {
+    position: relative;
+    width: 510px;
+    height: 300px;
+    .coachName {
+      top: 20px;
+      left: 20px;
+    }
+    .coachClasses {
+      bottom: 20px;
+      left: 20px;
+    }
+    .coachImg img {
+      height: 260px;
+      width: 310px;
+      top: 20px;
+      right: 20px;
+    }
+  }
   .container {
     width: 720px;
   }
@@ -458,10 +1025,75 @@ code {
     font-size: 1.2rem;
     width: 80%;
   }
+  .flexContainer {
+    justify-content: space-between;
+  }
+  .fighterCard {
+    width: 347px;
+  }
+  .scheduleContainer {
+    margin: 3rem 0;
+    grid-template-columns: 47% 47%;
+    grid-template-rows: auto auto auto;
+    gap: 3rem 6%;
+  }
+  .beltRankContainer {
+    grid-template-columns: 46% 46%;
+    grid-template-rows: auto auto;
+    gap: 0 8%;
+  }
+  .google-map {
+    width: 600px;
+    height: 400px;
+  }
+
+  .map-h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  .videoPlayer {
+    margin: 0;
+  }
 }
 
 // LARGE
 @media (min-width: 992px) {
+  .aboutContainer {
+    & > div:nth-child(1) {
+      .infoContainer {
+        width: 75%;
+        margin: 0;
+        padding-bottom: 0;
+        padding-right: 5rem;
+      }
+      img {
+        width: 25%;
+        height: auto;
+      }
+    }
+  }
+  .carouselContainer {
+    .carouselItemInactive {
+      left: 6rem;
+      bottom: 10rem;
+      h1 {
+        font-size: 2.8rem;
+      }
+      p {
+        font-size: 1.4rem;
+      }
+      button {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  .landingImgContainer {
+    margin: 0 0 5rem 0;
+  }
+  body {
+    padding-bottom: 312px;
+  }
   .container {
     width: 960px;
   }
@@ -470,6 +1102,10 @@ code {
   }
   .subhead {
     font-size: 1.5rem;
+    margin: 2rem auto 5rem auto;
+  }
+  .classItem {
+    width: 450px;
   }
 
   // NAVIGATION
@@ -499,6 +1135,9 @@ code {
       }
     }
   }
+  .classContainer {
+    justify-content: space-between;
+  }
   // FOOTER
   .footer {
     padding: 1rem;
@@ -510,14 +1149,97 @@ code {
       justify-content: flex-start;
       align-items: flex-start;
     }
+    button {
+      border: 2px solid white;
+      background-color: hsla(0, 0, 0, 0);
+      color: white;
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+  .fighterCard {
+    width: 467px;
+  }
+  .beltRankContainer {
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: auto auto;
+    gap: 0 5%;
+  }
+  .homeFlexContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5rem 0;
+    .mainContentParagraph {
+      margin-top: 0;
+      margin-left: 2rem;
+    }
+  }
+  .cardContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5rem 0;
+    .card {
+      width: 300px;
+      margin: 0;
+    }
   }
 }
 // DESKTOP
 @media (min-width: 1200px) {
+  .carouselContainer {
+    .carouselItemInactive {
+      left: 6rem;
+      bottom: 10rem;
+      h1 {
+        font-size: 3.2rem;
+      }
+      p {
+        font-size: 1.4rem;
+      }
+      button {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  .cardContainer {
+    .card {
+      width: 350px;
+    }
+  }
+  .homeFlexContainer {
+    .mainContentParagraph {
+      margin-left: 5rem;
+    }
+  }
+  .coachCardContainer {
+    justify-content: space-between;
+  }
+  .scheduleContainer {
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: auto auto;
+    gap: 3rem 5%;
+  }
+  .beltRankContainer {
+    grid-template-columns: 22% 22% 22% 22%;
+    grid-template-rows: auto;
+    gap: 0 4%;
+  }
+  .classItem {
+    width: 500px;
+  }
   .container {
     width: 1140px;
   }
   .headerTitle {
     font-size: 3.1rem;
+  }
+  .fighterCard {
+    width: 330px;
   }
 }

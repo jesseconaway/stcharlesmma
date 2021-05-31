@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 ReactDOM.render(
   <React.StrictMode>

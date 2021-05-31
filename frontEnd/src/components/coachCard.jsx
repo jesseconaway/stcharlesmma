@@ -13,7 +13,7 @@ const CoachCard = ({ name, classes, image }) => {
                 {classes.map(x => <p key={x}>{x}</p>)}
             </div>
             <div className="coachImg">
-                <img src={`../../coachImages/${image}`} alt={'picture of ' + name} />
+                <img src={`../../images/${image}`} alt={'picture of ' + name} />
             </div>
         </div>
     );

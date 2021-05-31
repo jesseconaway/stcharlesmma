@@ -10,6 +10,9 @@ body {
   font-weight: 400;
   font-style: normal;
   overflow-x: hidden;
+  padding-bottom: 657.6px;
+  min-height: 100vh;
+  position: relative;
 }
 
 h1,
@@ -46,7 +49,17 @@ button:active {
           transform: scale(0.99);
 }
 
+button.success {
+  background-color: #08a054;
+}
+
+button a {
+  text-decoration: none;
+  color: white;
+}
+
 table {
+  margin-top: 1rem;
   border: 1px solid black;
   border-collapse: collapse;
 }
@@ -55,6 +68,10 @@ table td,
 table th {
   border: 1px solid black;
   padding: 0.5rem 1rem;
+}
+
+form button {
+  margin: 0.5rem 0.5rem 0 0;
 }
 
 form label {
@@ -73,10 +90,42 @@ form select {
   min-width: 200px;
 }
 
-.container {
-  margin: 70px auto 0 auto;
+.container, .homeContainer, .aboutContainer, .classContainer, .coachCardContainer, .scheduleContainer, .beltRankContainer {
+  margin: 90px auto 0 auto;
   padding: 10px;
   width: 100%;
+}
+
+.homeContainer, .aboutContainer {
+  margin: 0 auto;
+}
+
+.homeContainer hr, .aboutContainer hr {
+  background-color: #b3b3b3;
+  border: 1px solid #b3b3b3;
+  border-radius: 1px;
+}
+
+.aboutContainer {
+  margin: 90px auto 0 auto;
+}
+
+.aboutContainer > div:nth-child(1) {
+  padding: 0 0 3rem 0;
+}
+
+.aboutContainer > div:nth-child(1) .infoContainer {
+  width: 90%;
+  margin: 0 auto 3rem auto;
+}
+
+.aboutContainer > div:nth-child(1) .infoContainer h1 {
+  margin-bottom: 2rem;
+}
+
+.aboutContainer > div:nth-child(1) img {
+  width: 90%;
+  height: auto;
 }
 
 code {
@@ -200,7 +249,7 @@ code {
 
 .nav-linksTransparent ul li a:hover {
   background-color: rgba(0, 0, 0, 0);
-  color: gray;
+  color: #be1e2e;
 }
 
 .nav-toggle {
@@ -261,13 +310,6 @@ code {
   right: -100px;
 }
 
-.landingImg {
-  width: 100%;
-  height: auto;
-  margin: 1.5rem auto;
-  display: block;
-}
-
 .headerTitle {
   text-align: center;
   font-size: 2.2rem;
@@ -275,8 +317,11 @@ code {
 }
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
   color: white;
-  margin-top: 1rem;
   background-color: #be1e2e;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -335,9 +380,67 @@ code {
           align-items: center;
 }
 
+.cardContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2rem 0;
+}
+
+.cardContainer a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+}
+
+.cardContainer .card {
+  margin: 1rem 0;
+  width: 90%;
+  background-color: #be1e2e;
+  border-radius: 4px;
+}
+
+.cardContainer .card a {
+  height: 100%;
+  width: 100%;
+}
+
+.cardContainer .card h2 {
+  margin: 0;
+}
+
+.cardContainer .card p {
+  text-align: left;
+  font-size: 1.1rem;
+  margin: 1.1rem 0 1.5rem 0;
+}
+
+.cardContainer .card button {
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.cardContainer .card button:hover {
+  background-color: white;
+  color: black;
+}
+
 .subhead {
   width: 90%;
-  margin: 0 auto;
+  margin: 2rem auto 3rem auto;
   font-size: 1rem;
 }
 
@@ -412,6 +515,10 @@ code {
   position: relative;
 }
 
+.formContainer form {
+  display: none;
+}
+
 .formContainer.is-visible {
   z-index: 1;
   opacity: 1;
@@ -419,6 +526,10 @@ code {
   -webkit-transform: none;
           transform: none;
   visibility: visible;
+}
+
+.formContainer.is-visible form {
+  display: block;
 }
 
 .updateLink {
@@ -483,8 +594,7 @@ code {
   background-color: #ac1b2a;
 }
 
-.cardContainer {
-  width: 1200px;
+.classContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -492,15 +602,60 @@ code {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 2rem;
+}
+
+.coachCardContainer {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.scheduleContainer, .beltRankContainer {
+  margin: 2rem 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90%;
+      grid-template-columns: 90%;
+  -ms-grid-rows: auto auto auto auto auto auto auto;
+      grid-template-rows: auto auto auto auto auto auto auto;
+  gap: 3rem 5%;
+}
+
+.scheduleContainer .beltHeader, .beltRankContainer .beltHeader {
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.beltRankContainer {
+  -ms-grid-rows: auto auto auto auto;
+      grid-template-rows: auto auto auto auto;
+}
+
+.beltRankContainer img {
+  width: 100%;
+  height: auto;
 }
 
 .coachCard {
   position: relative;
-  width: 510px;
-  height: 300px;
+  width: 382px;
+  height: 225px;
   margin: 2rem 0;
 }
 
@@ -522,8 +677,10 @@ code {
 
 .coachCard .coachName {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-right: 10px;
+  top: 15px;
+  left: 15px;
   font-size: 2rem;
   font-family: "Josefin Sans", sans-serif;
   font-weight: 700;
@@ -537,8 +694,10 @@ code {
 
 .coachCard .coachClasses {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-right: 10px;
+  bottom: 15px;
+  left: 15px;
   font-size: 1.4rem;
   font-weight: 700;
   color: white;
@@ -550,24 +709,673 @@ code {
 }
 
 .coachCard .coachImg img {
-  height: 260px;
-  width: 310px;
+  height: 195px;
+  width: 232px;
   -o-object-fit: cover;
      object-fit: cover;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
+}
+
+.secondaryNav {
+  margin: 1rem 0 1.5rem 0;
+  background-color: #be1e2e;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: auto;
+}
+
+.secondaryNav li a {
+  text-decoration: none;
+  color: white;
+  padding: 0.7rem 1rem;
+  display: block;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.secondaryNav li a.active {
+  background-color: #ac1b2a;
+}
+
+.secondaryNav li a:hover {
+  background-color: gray;
+}
+
+.secondaryNav li:nth-last-child(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-flex: 10;
+      -ms-flex-positive: 10;
+          flex-grow: 10;
+}
+
+.secondaryNav li:nth-last-child(1) a {
+  text-align: center;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  background-color: #cccccc;
+  color: black;
+  border-left: 4px solid white;
+}
+
+.secondaryNav li:nth-last-child(1) a:hover {
+  background-color: #b3b3b3;
+}
+
+.flexContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flexContainer a:nth-child(2) {
+  margin-left: 1rem;
+  margin-bottom: 3rem;
+}
+
+.flexContainer .space-between {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.flexContainer .space-between hr {
+  width: 40%;
+  height: 0;
+  border: 2px solid black;
+  background-color: black;
+  border-radius: 2px;
+  margin-top: 0.6rem;
+}
+
+.flexContainer .space-between p {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.flexContainer form {
+  margin-bottom: 2rem;
+  width: 300px;
+}
+
+.flexContainer form input,
+.flexContainer form label,
+.flexContainer form textarea {
+  width: 100%;
+}
+
+.flexContainer .google-map {
+  margin-bottom: 2rem;
+}
+
+.homeFlexContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3rem 0;
+}
+
+.homeFlexContainer .mainContentParagraph {
+  margin-top: 2rem;
+  width: 340px;
+  font-size: 1.1rem;
+}
+
+.homeFlexContainer .mainContentParagraph strong {
+  color: #be1e2e;
+}
+
+.flexContainerVertical {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.flexContainerVertical a:nth-child(2) {
+  margin: 1rem 0 0 0;
+}
+
+.fighterCard {
+  width: 330px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.fighterCard .fighterImg img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.8rem;
+}
+
+.fighterCard .fighterName {
+  font-size: 1.2rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.adminList {
+  margin: 1rem 0;
+}
+
+.adminBeltList {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.adminListItem, .adminBeltItem, .adminScheduleItem, .fighterListItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 1rem 0;
+}
+
+.adminListItem p, .adminBeltItem p, .adminScheduleItem p, .fighterListItem p {
+  display: inline-block;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.adminBeltItem {
+  margin: 0.2rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.adminScheduleItem {
+  margin: 0.2rem 0;
+}
+
+.adminScheduleItem a {
+  color: black;
+  text-decoration: none;
+}
+
+.adminScheduleItem a:hover {
+  color: #be1e2e;
+}
+
+.fighterListItem {
+  margin: 0.5rem 0;
+}
+
+.fighterListItem p {
+  font-size: 1rem;
+}
+
+.deleteIcon {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  background-color: #be1e2e;
+  border-radius: 50%;
+  position: relative;
+  top: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.deleteIcon div {
+  position: relative;
+  left: -6px;
+  top: -0.5px;
+}
+
+.deleteIcon div span {
+  background-color: white;
+  height: 1.9px;
+  width: 12px;
+  position: absolute;
+  border-radius: 1px;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.deleteIcon div span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.deleteIcon div span:nth-child(2) {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.classItem {
+  width: 340px;
+  padding: 1rem;
+}
+
+.classItem p {
+  margin: 1rem 0;
+}
+
+.hook {
+  position: relative;
+  top: -80px;
+}
+
+@-webkit-keyframes spinner {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.loadingBox {
+  margin: 4rem 0;
+  padding: 2rem 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loadingBox .svg-inline--fa.fa-w-16 {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.loadingBox p {
+  font-size: 2.2rem;
+  margin-right: 1rem;
+}
+
+.spinner {
+  height: 2.2rem;
+  width: 2.2rem;
+  -webkit-animation: spinner 1s linear infinite;
+          animation: spinner 1s linear infinite;
+}
+
+.google-map {
+  width: 100%;
+  height: 300px;
+}
+
+.google-map h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.pin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+}
+
+.pin .icon {
+  height: 40px;
+  width: auto;
+  color: #be1e2e;
+}
+
+.pin .pin-icon {
+  position: relative;
+  -webkit-transform: translateX(-50%) translateY(-100%);
+          transform: translateX(-50%) translateY(-100%);
+}
+
+.videoPlayer {
+  height: 197px;
+  width: 350px;
+  margin: 0 auto;
+}
+
+.landingImgContainer {
+  height: 240px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 58.4px 0 3rem 0;
+}
+
+.landingImg {
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  height: 100%;
+}
+
+@-webkit-keyframes slide-in {
+  0% {
+    display: block;
+    left: -100%;
+    opacity: 0%;
+  }
+  70% {
+    left: 5rem;
+    opacity: 70%;
+  }
+  100% {
+    left: 2rem;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    display: block;
+    left: -100%;
+    opacity: 0%;
+  }
+  70% {
+    left: 5rem;
+    opacity: 70%;
+  }
+  100% {
+    left: 2rem;
+  }
+}
+
+.carouselContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.4)), color-stop(40%, rgba(0, 0, 0, 0.4)));
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4) 40%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.carouselContainer .carouselItemInactive, .carouselContainer .carouselItemActive {
+  position: absolute;
+  color: white;
+  display: none;
+  left: 2rem;
+  bottom: 3rem;
+  width: 90vw;
+  overflow: hidden;
+}
+
+.carouselContainer .carouselItemInactive h1, .carouselContainer .carouselItemActive h1 {
+  font-size: 1.2rem;
+}
+
+.carouselContainer .carouselItemInactive p, .carouselContainer .carouselItemActive p {
+  margin: 0.5rem 0 0.8rem 0;
+  font-size: 1rem;
+}
+
+.carouselContainer .carouselItemInactive button, .carouselContainer .carouselItemActive button {
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.carouselContainer .carouselItemInactive button:hover, .carouselContainer .carouselItemActive button:hover {
+  background-color: white;
+}
+
+.carouselContainer .carouselItemInactive button:hover a, .carouselContainer .carouselItemActive button:hover a {
+  color: black;
+}
+
+.carouselContainer .carouselItemActive {
+  -webkit-animation-name: slide-in;
+          animation-name: slide-in;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  display: block;
+}
+
+.carouselContainer .pillBox {
+  position: absolute;
+  bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.carouselContainer .pillBox .pill {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 0 0.7rem;
+  cursor: pointer;
+}
+
+.carouselContainer .pillBox .pill:nth-child(1) {
+  margin-left: 0;
+}
+
+.carouselContainer .pillBox .pill:nth-last-child(1) {
+  margin-right: 0;
+}
+
+.carouselContainer .pillBox .activePill {
+  background-color: white;
 }
 
 @media (min-width: 576px) {
-  .container {
+  .container, .homeContainer, .aboutContainer, .classContainer, .coachCardContainer, .scheduleContainer, .beltRankContainer {
     width: 540px;
     padding: 0;
+  }
+  .classItem {
+    width: 500px;
+  }
+  .videoPlayer {
+    height: 304px;
+    width: 540px;
+  }
+  .landingImgContainer {
+    min-height: 200px;
+    width: 100%;
+    height: 100%;
+  }
+  .landingImg {
+    height: auto;
+    width: 100%;
   }
 }
 
 @media (min-width: 768px) {
-  .container {
+  @-webkit-keyframes slide-in {
+    0% {
+      display: block;
+      left: -100%;
+      opacity: 0%;
+    }
+    70% {
+      left: 8rem;
+      opacity: 70%;
+    }
+    100% {
+      left: 6rem;
+    }
+  }
+  @keyframes slide-in {
+    0% {
+      display: block;
+      left: -100%;
+      opacity: 0%;
+    }
+    70% {
+      left: 8rem;
+      opacity: 70%;
+    }
+    100% {
+      left: 6rem;
+    }
+  }
+  .aboutContainer {
+    margin: 90px auto 0 auto;
+  }
+  .aboutContainer > div:nth-child(1) .infoContainer {
+    width: 70%;
+    margin: 0;
+    padding-right: 0;
+    padding-bottom: 2rem;
+  }
+  .aboutContainer > div:nth-child(1) img {
+    width: 30%;
+    height: auto;
+  }
+  .carouselContainer .carouselItemInactive, .carouselContainer .carouselItemActive {
+    left: 6rem;
+    bottom: 10rem;
+  }
+  .carouselContainer .carouselItemInactive h1, .carouselContainer .carouselItemActive h1 {
+    font-size: 2.4rem;
+  }
+  .carouselContainer .carouselItemInactive p, .carouselContainer .carouselItemActive p {
+    margin: 0.6rem 0 1.4rem 0;
+    font-size: 1.2rem;
+  }
+  .carouselContainer .carouselItemInactive button, .carouselContainer .carouselItemActive button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.7rem;
+  }
+  .carouselContainer .pillBox {
+    bottom: 2rem;
+  }
+  .carouselContainer .pillBox .pill {
+    height: 15px;
+    width: 15px;
+    margin: 0 1rem;
+  }
+  .coachCard {
+    position: relative;
+    width: 510px;
+    height: 300px;
+  }
+  .coachCard .coachName {
+    top: 20px;
+    left: 20px;
+  }
+  .coachCard .coachClasses {
+    bottom: 20px;
+    left: 20px;
+  }
+  .coachCard .coachImg img {
+    height: 260px;
+    width: 310px;
+    top: 20px;
+    right: 20px;
+  }
+  .container, .homeContainer, .aboutContainer, .classContainer, .coachCardContainer, .scheduleContainer, .beltRankContainer {
     width: 720px;
   }
   .headerTitle {
@@ -577,10 +1385,73 @@ code {
     font-size: 1.2rem;
     width: 80%;
   }
+  .flexContainer {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .fighterCard {
+    width: 347px;
+  }
+  .scheduleContainer, .beltRankContainer {
+    margin: 3rem 0;
+    -ms-grid-columns: 47% 47%;
+        grid-template-columns: 47% 47%;
+    -ms-grid-rows: auto auto auto;
+        grid-template-rows: auto auto auto;
+    gap: 3rem 6%;
+  }
+  .beltRankContainer {
+    -ms-grid-columns: 46% 46%;
+        grid-template-columns: 46% 46%;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
+    gap: 0 8%;
+  }
+  .google-map {
+    width: 600px;
+    height: 400px;
+  }
+  .map-h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+  .videoPlayer {
+    margin: 0;
+  }
 }
 
 @media (min-width: 992px) {
-  .container {
+  .aboutContainer > div:nth-child(1) .infoContainer {
+    width: 75%;
+    margin: 0;
+    padding-bottom: 0;
+    padding-right: 5rem;
+  }
+  .aboutContainer > div:nth-child(1) img {
+    width: 25%;
+    height: auto;
+  }
+  .carouselContainer .carouselItemInactive, .carouselContainer .carouselItemActive {
+    left: 6rem;
+    bottom: 10rem;
+  }
+  .carouselContainer .carouselItemInactive h1, .carouselContainer .carouselItemActive h1 {
+    font-size: 2.8rem;
+  }
+  .carouselContainer .carouselItemInactive p, .carouselContainer .carouselItemActive p {
+    font-size: 1.4rem;
+  }
+  .carouselContainer .carouselItemInactive button, .carouselContainer .carouselItemActive button {
+    font-size: 1.4rem;
+  }
+  .landingImgContainer {
+    margin: 0 0 5rem 0;
+  }
+  body {
+    padding-bottom: 312px;
+  }
+  .container, .homeContainer, .aboutContainer, .classContainer, .coachCardContainer, .scheduleContainer, .beltRankContainer {
     width: 960px;
   }
   .headerTitle {
@@ -588,6 +1459,10 @@ code {
   }
   .subhead {
     font-size: 1.5rem;
+    margin: 2rem auto 5rem auto;
+  }
+  .classItem {
+    width: 450px;
   }
   .navbar {
     -webkit-box-orient: horizontal;
@@ -624,6 +1499,11 @@ code {
   .nav-links ul li a {
     padding: 1.1rem 1rem 1rem 1rem;
   }
+  .classContainer {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
   .footer {
     padding: 1rem;
     -webkit-box-orient: horizontal;
@@ -645,14 +1525,115 @@ code {
         -ms-flex-align: start;
             align-items: flex-start;
   }
+  .footer button {
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+  }
+  .footer button:hover {
+    background-color: white;
+    color: black;
+  }
+  .fighterCard {
+    width: 467px;
+  }
+  .beltRankContainer {
+    -ms-grid-columns: 30% 30% 30%;
+        grid-template-columns: 30% 30% 30%;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
+    gap: 0 5%;
+  }
+  .homeFlexContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 5rem 0;
+  }
+  .homeFlexContainer .mainContentParagraph {
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+  .cardContainer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 5rem 0;
+  }
+  .cardContainer .card {
+    width: 300px;
+    margin: 0;
+  }
 }
 
 @media (min-width: 1200px) {
-  .container {
+  .carouselContainer .carouselItemInactive, .carouselContainer .carouselItemActive {
+    left: 6rem;
+    bottom: 10rem;
+  }
+  .carouselContainer .carouselItemInactive h1, .carouselContainer .carouselItemActive h1 {
+    font-size: 3.2rem;
+  }
+  .carouselContainer .carouselItemInactive p, .carouselContainer .carouselItemActive p {
+    font-size: 1.4rem;
+  }
+  .carouselContainer .carouselItemInactive button, .carouselContainer .carouselItemActive button {
+    font-size: 1.4rem;
+  }
+  .cardContainer .card {
+    width: 350px;
+  }
+  .homeFlexContainer .mainContentParagraph {
+    margin-left: 5rem;
+  }
+  .coachCardContainer {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .scheduleContainer, .beltRankContainer {
+    -ms-grid-columns: 30% 30% 30%;
+        grid-template-columns: 30% 30% 30%;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
+    gap: 3rem 5%;
+  }
+  .beltRankContainer {
+    -ms-grid-columns: 22% 22% 22% 22%;
+        grid-template-columns: 22% 22% 22% 22%;
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+    gap: 0 4%;
+  }
+  .classItem {
+    width: 500px;
+  }
+  .container, .homeContainer, .aboutContainer, .classContainer, .coachCardContainer, .scheduleContainer, .beltRankContainer {
     width: 1140px;
   }
   .headerTitle {
     font-size: 3.1rem;
+  }
+  .fighterCard {
+    width: 330px;
   }
 }
 /*# sourceMappingURL=index.css.map */

@@ -1,12 +1,11 @@
 const express = require('express');
-const Image = require('../models/imageModel');
 const multer = require('multer');
 const fs = require('fs-extra');
 
 const imageRouter = express.Router();
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './frontEnd/public/coachImages');
+        cb(null, './frontEnd/public/images');
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -25,20 +24,13 @@ const upload = multer({
 })
 
 imageRouter.route('/').post(upload.single('imageData'), (req, res) => {
-    const newImage = new Image({
-        imageData: req.file.path
-    })
-    newImage.save()
-        .then(() => {
-            res.status(200).send("New Coach Added!")
-        })
-        .catch((err) => console.log(err));
+    res.status(200).send("Success")
 });
 
 imageRouter.route('/:imageName').delete((req, res) => {
     try {
-        fs.unlinkSync(`./frontEnd/public/coachImages/${req.params.imageName}`);
-        res.send('Coach Deleted');
+        fs.unlinkSync(`./frontEnd/public/images/${req.params.imageName}`);
+        res.status(200).send("Success");
     } catch (err) {
         res.send('error');
     };

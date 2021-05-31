@@ -27,8 +27,11 @@ const TableBody = ({ data, onDelete, onUpdate }) => {
                             {item.classesCoached && <td>{item.classesCoached.map(x => {
                                 return (<p key={x}>{x}</p>)
                             })}</td>}
+                            {item.details && <td>{item.details.map(x => {
+                                return (<p key={x}>{x}</p>)
+                            })}</td>}
                             {item.order && <td>{item.order}</td>}
-                            {item.image && <td><img className="thumbnailImg" src={`../../coachImages/${item.image}`} alt={'picture of ' + item.name} /></td>}
+                            {item.image && <td><img className="thumbnailImg" src={`../../images/${item.image}`} alt={'picture of ' + item.name} /></td>}
                             <td>
                                 <button onClick={() => {
                                     setItemToDelete(item);

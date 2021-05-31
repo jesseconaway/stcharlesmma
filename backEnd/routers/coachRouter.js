@@ -11,12 +11,11 @@ coachRouter.route('/').get((req, res) => {
 
 coachRouter.route('/:id').get((req, res) => {
     Coach.findById(req.params.id)
-        .then(camp => res.json(camp))
+        .then(coach => res.json(coach))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 coachRouter.route('/').post((req, res) => {
-    console.log(req.body);
     const name = req.body.name;
     const classesCoached = req.body.classesCoached;
     const order = req.body.order;
@@ -25,7 +24,7 @@ coachRouter.route('/').post((req, res) => {
     const newCoach = new Coach({ name, classesCoached, order, image });
 
     newCoach.save()
-        .then(res.status(200).send("New Coach Added!"))
+        .then(res.status(200).send("Success"))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -38,7 +37,7 @@ coachRouter.route('/:id').post((req, res) => {
             coach.image = req.body.image;
 
             coach.save()
-                .then(() => res.send("Coach Updated"))
+                .then(() => res.status(200).send("Success"))
                 .catch(err => res.status(400).json('Error: ' + err));
         })
         .catch(err => res.status(400).json('Error: ' + err));
@@ -46,7 +45,7 @@ coachRouter.route('/:id').post((req, res) => {
 
 coachRouter.route('/:id').delete((req, res) => {
     Coach.findByIdAndDelete(req.params.id)
-        .then(() => res.send('Coach Deleted'))
+        .then(() => res.status(200).send("Success"))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 

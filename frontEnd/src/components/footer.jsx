@@ -39,7 +39,7 @@ const Footer = () => {
             </div>
             <div>
                 <ul>
-                    <li><Link to="/admin">Admin Login</Link></li>
+                    <li><Link to="/adminLogin">Admin Login</Link></li>
                     <li><Link to="/waiver">Sign Waiver</Link></li>
                 </ul>
             </div>
