@@ -32,10 +32,6 @@ connection.once('open', () => {
     console.log('MongoDB connected successfully');
 })
 
-app.get('/', (req, res) => {
-    res.send('Server Ready');
-})
-
 app.use('/api/belts', beltRouter);
 app.use('/api/classes', classRouter);
 app.use('/api/coaches', coachRouter);
