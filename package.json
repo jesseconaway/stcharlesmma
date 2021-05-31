@@ -2,7 +2,7 @@
   "name": "stcharlesmma",
   "version": "1.0.0",
   "description": "Saint Charles MMA",
-  "main": "index.js",
+  "main": "/backend/server.js",
   "scripts": {
     "start-nodemon": "nodemon --watch backend --exec node backend/server.js",
     "start": "node backend/server.js",
