@@ -20,8 +20,11 @@ coachRouter.route('/').post((req, res) => {
     const classesCoached = req.body.classesCoached;
     const order = req.body.order;
     const image = req.body.image;
+    const bio = req.body.bio;
+    const accolades = req.body.accolades;
+    const quote = req.body.quote;
 
-    const newCoach = new Coach({ name, classesCoached, order, image });
+    const newCoach = new Coach({ name, classesCoached, order, image, bio, accolades, quote });
 
     newCoach.save()
         .then(res.status(200).send("Success"))
@@ -35,6 +38,9 @@ coachRouter.route('/:id').post((req, res) => {
             coach.classesCoached = req.body.classesCoached;
             coach.order = req.body.order;
             coach.image = req.body.image;
+            coach.bio = req.body.bio;
+            coach.accolades = req.body.accolades;
+            coach.quote = req.body.quote;
 
             coach.save()
                 .then(() => res.status(200).send("Success"))

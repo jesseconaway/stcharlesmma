@@ -16,6 +16,9 @@ const AdminCoaches = () => {
         classesCoached: [],
         image: '',
         file: undefined,
+        bio: '',
+        accolades: [],
+        quote: '',
         order: 999
     });
     const [classes, setClasses] = useState([]);
@@ -40,6 +43,7 @@ const AdminCoaches = () => {
     const formContainer = useRef(null);
     const formElement = useRef(null);
     const tableElement = useRef(null);
+    const accoladesInput = useRef(null);
 
     const fetchData = async () => {
         const coachList = await axios.get('/api/coaches');
@@ -117,7 +121,10 @@ const AdminCoaches = () => {
             name: coachToUpdate.name,
             classesCoached: coachToUpdate.classesCoached,
             image: coachToUpdate.image,
-            order: coachToUpdate.order
+            order: coachToUpdate.order,
+            bio: coachToUpdate.bio,
+            accolades: coachToUpdate.accolades,
+            quote: coachToUpdate.quote
         });
         for (let item of coach.classesCoached) {
             handleAddClass(item);
@@ -162,6 +169,12 @@ const AdminCoaches = () => {
         if (coach.classesCoached.includes(classToAdd)) return;
         let newCoach = { ...coach };
         newCoach.classesCoached = [...coach.classesCoached, classToAdd];
+        setCoach(newCoach);
+    };
+
+    const handleAddAccolade = (accoladeToAdd) => {
+        let newCoach = { ...coach };
+        newCoach.accolades = [...coach.accolades, accoladeToAdd];
         setCoach(newCoach);
     };
 
@@ -242,6 +255,40 @@ const AdminCoaches = () => {
                     </ul>
                     <label htmlFor="order">Display Order <FontAwesomeIcon className="icon" title='This controls the order in which coaches are displayed. "1" would be at the top of the page. Numbers can be repeated.' icon={questionMark} /></label>
                     <input id="order" type="number" name="order" value={coach.order} onChange={(e) => handleFormUpdate(e.target)} required />
+
+                    <label htmlFor="bio">Bio</label>
+                    <textarea id="bio" type="text" name="bio" value={coach.bio ? coach.bio : ''} onChange={(e) => handleFormUpdate(e.target)} />
+
+                    <label htmlFor="details">Accolades <FontAwesomeIcon className="icon" title='Enter information like "Fighters Coached", "Awards Won", "Personal Achievements", etc.. Enter each piece of information as a separate item.' icon={questionMark} /></label>
+                    <input ref={accoladesInput} id="details" name="details" />
+                    <button className="success" type="button" onClick={() => {
+                        if (accoladesInput.current.value === "") {
+                            toast.error('Please enter a value');
+                            return;
+                        }
+                        handleAddAccolade(accoladesInput.current.value);
+                        accoladesInput.current.value = '';
+                    }}>Add</button>
+                    <ul>
+                        {coach.accolades && coach.accolades.length > 0
+                            && coach.accolades.map(detail => {
+                                return (
+                                    <li className="fighterListItem" key={detail}>
+                                        <p>{detail}</p>
+                                        <div className="deleteIcon" onClick={() => {
+                                            let newCoach = { ...coach };
+                                            newCoach.accolades = newCoach.accolades.filter(x => x !== detail);
+                                            setCoach(newCoach);
+                                        }}><div><span></span><span></span></div>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                    </ul>
+
+                    <label htmlFor="quote">Quote</label>
+                    <input id="quote" type="text" name="quote" value={coach.quote ? coach.quote : ''} onChange={(e) => handleFormUpdate(e.target)} />
+
                     <label htmlFor="image">Upload Image</label>
                     <input required={crudFunction === 'create' ? true : false} type="file" id="image" name="image" onChange={(e) => {
                         handleAddFile(e.target.files);

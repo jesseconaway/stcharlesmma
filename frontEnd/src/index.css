@@ -466,7 +466,7 @@ code {
           justify-content: center;
 }
 
-.confirmDelete div {
+.confirmDelete > div {
   background-color: white;
   width: 350px;
   -webkit-box-align: center;
@@ -479,20 +479,168 @@ code {
   text-align: center;
 }
 
-.confirmDelete div p {
+.confirmDelete > div p {
   display: block;
   margin-bottom: 2rem;
 }
 
-.confirmDelete div span {
+.confirmDelete > div span {
   margin: auto;
 }
 
-.confirmDelete div span button:nth-child(1) {
+.confirmDelete > div span button:nth-child(1) {
   margin-right: 2rem;
 }
 
-.confirmDelete.shown {
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    opacity: 0.25;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    opacity: 0.25;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    opacity: 0.25;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    opacity: 0.25;
+  }
+}
+
+.infoPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.infoPopup * {
+  text-align: left;
+}
+
+.infoPopup > div {
+  position: relative;
+  overflow: -moz-scrollbars-none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: scroll;
+  background-color: white;
+  width: 350px;
+  padding: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  position: fixed;
+  top: 5vh;
+  max-height: 90vh;
+}
+
+.infoPopup > div::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
+
+.infoPopup > div h2 {
+  margin-bottom: 0.5rem;
+}
+
+.infoPopup > div h3 {
+  margin: 2rem 0 1rem 0;
+}
+
+.infoPopup > div img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.infoPopup > div p {
+  margin: 0;
+}
+
+.infoPopup > div ul {
+  list-style-type: none;
+}
+
+.infoPopup > div ul li {
+  margin: 0.5rem 0;
+}
+
+.infoPopup > div button {
+  margin: 1rem 0 0 0;
+}
+
+.infoPopup > div span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.2rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(white));
+  background: linear-gradient(rgba(255, 255, 255, 0), white);
+}
+
+.infoPopup > div span svg {
+  -webkit-animation: pulse 1.5s linear infinite;
+          animation: pulse 1.5s linear infinite;
+  width: 60px;
+  height: auto;
+}
+
+.infoPopup > div span.shown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.confirmDelete.shown,
+.infoPopup.shown {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -657,6 +805,7 @@ code {
   width: 382px;
   height: 225px;
   margin: 2rem 0;
+  cursor: pointer;
 }
 
 .coachCard .blackDiv {
@@ -716,6 +865,15 @@ code {
   position: absolute;
   top: 15px;
   right: 15px;
+}
+
+.coachCard:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition-duration: 150ms;
+          transition-duration: 150ms;
 }
 
 .secondaryNav {
@@ -1418,6 +1576,13 @@ code {
   }
   .videoPlayer {
     margin: 0;
+  }
+  .infoPopup > div {
+    width: 550px;
+    padding: 3rem 4rem;
+  }
+  .infoPopup > div h2 {
+    font-size: 2rem;
   }
 }
 

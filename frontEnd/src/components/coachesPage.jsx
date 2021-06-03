@@ -22,6 +22,7 @@ const Coaches = () => {
         {loading ? <Loading /> :
             <div className="container">
                 <h1>COACHES</h1>
+                <p>click for details</p>
                 <div className="coachCardContainer">
                     {coaches.map(coach => {
                         return (
@@ -29,7 +30,10 @@ const Coaches = () => {
                                 key={coach._id}
                                 name={coach.name.toUpperCase()}
                                 classes={coach.classesCoached}
-                                image={coach.image} />
+                                image={coach.image}
+                                bio={coach.bio}
+                                accolades={coach.accolades}
+                                quote={coach.quote} />
                         )
                     })}
                 </div>
