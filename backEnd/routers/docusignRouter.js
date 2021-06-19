@@ -9,13 +9,13 @@ const docusignRouter = express.Router();
 docusignRouter.route('/').post(async (req, res) => {
 
     const clientId = process.env.CLIENT_ID;
-    const baseUri = "https://account-d.docusign.com"; //CHANGE IN PRODUCTION TO https://account.docusign.com
+    const baseUri = "https://account.docusign.com"; //CHANGE IN PRODUCTION TO https://account.docusign.com
     const authHeader = "Basic " + Buffer.from(`${clientId}:${process.env.SECRET_KEY}`).toString('base64');
 
     // const userEmail = req.body.email;
     // const userName = req.body.name;
 
-    const returnUrl = 'http://localhost:3000/waiverSuccess';
+    const returnUrl = 'https://scmma.herokuapp.com/waiverSuccess';
 
     axios.post(baseUri + '/oauth/token', {
         "grant_type": "authorization_code",

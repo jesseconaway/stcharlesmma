@@ -6,8 +6,8 @@ const Waiver = () => {
 
     let location = useLocation();
     let history = useHistory();
-    const baseApiUri = "https://account-d.docusign.com"; //CHANGE IN PRODUCTION TO https://account.docusign.com
-    const websiteUrl = 'http://localhost:3000' //CHANGE IN PRODUCTION
+    const baseApiUri = "https://account.docusign.com"; //CHANGE IN PRODUCTION TO https://account.docusign.com
+    const websiteUrl = 'https://scmma.herokuapp.com' //CHANGE IN PRODUCTION
 
     const authCodeUri = `${baseApiUri}/oauth/auth?response_type=code&scope=signature&client_id=9a9f2368-543a-4eed-a346-665af2a74647&redirect_uri=${websiteUrl}/waiver/sign`;
 
