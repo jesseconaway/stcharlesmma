@@ -10,6 +10,7 @@ docusignRouter.route('/').post(async (req, res) => {
 
     const clientId = process.env.CLIENT_ID;
     const baseUri = "https://account.docusign.com"; //CHANGE IN PRODUCTION TO https://account.docusign.com
+    // ALSO, PROXY to LOCALHOST:3000 MAY NEED TO BE ADDED TO JSON FILE FOR DEVELOPMENT
     const authHeader = "Basic " + Buffer.from(`${clientId}:${process.env.SECRET_KEY}`).toString('base64');
 
     // const userEmail = req.body.email;
